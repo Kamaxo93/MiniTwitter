@@ -3,5 +3,8 @@
     <string name="hint_email_login_activity">Email</string>
     <string name="hint_password_login_activity">Contraseña</string>
     <string name="btn_text_login_activity">Iniciar sesión</string>
+    <string name="btn_text_sign_up_activity">Registrate</string>
     <string name="text_create_account">Si aún no tienes cuenta, regístrate aquí.</string>
+    <string name="text_go_login">Si ya dispone de una cuenta, inicie sesión aqui.</string>
+    <string name="hint_user_name_login_activity">Nombre de usuario</string>
 </resources>
