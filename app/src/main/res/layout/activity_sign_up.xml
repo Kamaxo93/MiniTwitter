@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/activity_login__img__icon_primary"
+        android:id="@+id/activity_sing_up__img__icon_primary"
         android:layout_width="@dimen/dp300"
         android:layout_height="@dimen/dp150"
         android:contentDescription="@string/app_name"
@@ -20,20 +20,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/activity_login__input__email"
+        android:id="@+id/activity_sing_up__input__user_name"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp32"
+        android:hint="@string/hint_user_name_login_activity"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/hint_user_name_login_activity"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/activity_sing_up__img__icon_primary"
+        app:layout_constraintStart_toStartOf="@id/activity_sing_up__img__icon_primary"
+        app:layout_constraintTop_toBottomOf="@id/activity_sing_up__img__icon_primary"/>
+
+    <EditText
+        android:id="@+id/activity_sing_up__input__email"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
         android:hint="@string/hint_email_login_activity"
         android:inputType="textEmailAddress"
         android:autofillHints="@string/hint_email_login_activity"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/activity_login__img__icon_primary"
-        app:layout_constraintStart_toStartOf="@id/activity_login__img__icon_primary"
-        app:layout_constraintTop_toBottomOf="@id/activity_login__img__icon_primary" />
+        app:layout_constraintEnd_toEndOf="@id/activity_sing_up__input__user_name"
+        app:layout_constraintStart_toStartOf="@id/activity_sing_up__input__user_name"
+        app:layout_constraintTop_toBottomOf="@id/activity_sing_up__input__user_name" />
 
     <EditText
-        android:id="@+id/activity_login__input__password"
+        android:id="@+id/activity_sing_up__input__password"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp8"
@@ -41,32 +54,32 @@
         android:autofillHints="@string/hint_password_login_activity"
         android:inputType="textPassword"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/activity_login__input__email"
-        app:layout_constraintStart_toStartOf="@id/activity_login__input__email"
-        app:layout_constraintTop_toBottomOf="@id/activity_login__input__email" />
+        app:layout_constraintEnd_toEndOf="@id/activity_sing_up__input__email"
+        app:layout_constraintStart_toStartOf="@id/activity_sing_up__input__email"
+        app:layout_constraintTop_toBottomOf="@id/activity_sing_up__input__email" />
 
     <Button
-        android:id="@+id/activity_login__btn__login_in"
+        android:id="@+id/activity_sing_up__btn__login_in"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp16"
         android:backgroundTint="@color/white"
-        android:text="@string/btn_text_login_activity"
+        android:text="@string/btn_text_sign_up_activity"
         android:textColor="@color/color_blue_mini_twitter_dark"
-        app:layout_constraintEnd_toEndOf="@id/activity_login__input__password"
-        app:layout_constraintStart_toStartOf="@id/activity_login__input__password"
-        app:layout_constraintTop_toBottomOf="@id/activity_login__input__password" />
+        app:layout_constraintEnd_toEndOf="@id/activity_sing_up__input__password"
+        app:layout_constraintStart_toStartOf="@id/activity_sing_up__input__password"
+        app:layout_constraintTop_toBottomOf="@id/activity_sing_up__input__password" />
 
     <TextView
-        android:id="@+id/activity_login__label__check_in"
+        android:id="@+id/activity_sing_up__label__login_in"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="@string/text_create_account"
+        android:text="@string/text_go_login"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintEnd_toEndOf="@id/activity_login__btn__login_in"
-        app:layout_constraintStart_toStartOf="@id/activity_login__btn__login_in"
-        app:layout_constraintTop_toBottomOf="@id/activity_login__btn__login_in" />
+        app:layout_constraintEnd_toEndOf="@id/activity_sing_up__btn__login_in"
+        app:layout_constraintStart_toStartOf="@id/activity_sing_up__btn__login_in"
+        app:layout_constraintTop_toBottomOf="@id/activity_sing_up__btn__login_in" />
 </androidx.constraintlayout.widget.ConstraintLayout>
