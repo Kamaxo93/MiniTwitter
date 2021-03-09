@@ -7,4 +7,15 @@
     <string name="text_create_account">Si aún no tienes cuenta, regístrate aquí.</string>
     <string name="text_go_login">Si ya dispone de una cuenta, inicie sesión aqui.</string>
     <string name="hint_user_name_login_activity">Nombre de usuario</string>
+    <string name="text_error_input_user_name">Nombre de usuario requerido</string>
+    <string name="text_error_input_email_login">Email requerido</string>
+    <string name="text_error_input_email_sign_up">Email requerido</string>
+    <string name="text_error_input_password_login">Contraseña requerida</string>
+    <string name="text_error_input_password_sign_up">Contraseña requerida</string>
+    <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!---->
 </resources>
