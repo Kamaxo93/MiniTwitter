@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MiniTwitter</string>
+    <string name="app_name">CL05-MiniTwitter</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Contraseña</string>
     <string name="btn_login">Iniciar sesión</string>

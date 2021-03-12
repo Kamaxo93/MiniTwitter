@@ -1,7 +1,9 @@
-package com.androidavanzado.cl05_minitwitter;
+package com.androidavanzado.cl05_minitwitter.ui.tweets;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.androidavanzado.cl05_minitwitter.R;
 import com.androidavanzado.cl05_minitwitter.common.Constantes;
 import com.androidavanzado.cl05_minitwitter.common.SharedPreferencesManager;
+import com.androidavanzado.cl05_minitwitter.data.TweetViewModel;
 import com.androidavanzado.cl05_minitwitter.retrofit.response.Like;
 import com.androidavanzado.cl05_minitwitter.retrofit.response.Tweet;
 import com.bumptech.glide.Glide;
@@ -22,11 +26,13 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
     private Context ctx;
     private List<Tweet> mValues;
     String username;
+    TweetViewModel tweetViewModel;
 
     public MyTweetRecyclerViewAdapter(Context contexto, List<Tweet> items) {
         mValues = items;
         ctx = contexto;
         username = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_USERNAME);
+        tweetViewModel = ViewModelProviders.of((FragmentActivity) ctx).get(TweetViewModel.class);
     }
 
     @Override
@@ -41,7 +47,7 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
         if(mValues != null) {
             holder.mItem = mValues.get(position);
 
-            holder.tvUsername.setText(holder.mItem.getUser().getUsername());
+            holder.tvUsername.setText("@" + holder.mItem.getUser().getUsername());
             holder.tvMessage.setText(holder.mItem.getMensaje());
             holder.tvLikesCount.setText(String.valueOf(holder.mItem.getLikes().size()));
 
@@ -51,6 +57,32 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
                         .load("https://www.minitwitter.com/apiv1/uploads/photos/" + photo)
                         .into(holder.ivAvatar);
             }
+
+            Glide.with(ctx)
+                    .load(R.drawable.ic_like)
+                    .into(holder.ivLike);
+            holder.tvLikesCount.setTextColor(ctx.getResources().getColor(android.R.color.black));
+            holder.tvLikesCount.setTypeface(null, Typeface.NORMAL);
+
+            holder.ivShowMenu.setVisibility(View.GONE);
+            if(holder.mItem.getUser().getUsername().equals(username)) {
+                holder.ivShowMenu.setVisibility(View.VISIBLE);
+            }
+
+            holder.ivShowMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tweetViewModel.openDialogTweetMenu(ctx, holder.mItem.getId());
+                }
+            });
+
+
+            holder.ivLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tweetViewModel.likeTweet(holder.mItem.getId());
+                }
+            });
 
             for (Like like : holder.mItem.getLikes()) {
                 if (like.getUsername().equals(username)) {
@@ -82,6 +114,7 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
         public final View mView;
         public final ImageView ivAvatar;
         public final ImageView ivLike;
+        public final ImageView ivShowMenu;
         public final TextView tvUsername;
         public final TextView tvMessage;
         public final TextView tvLikesCount;
@@ -92,6 +125,7 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
             mView = view;
             ivAvatar = view.findViewById(R.id.imageViewAvatar);
             ivLike = view.findViewById(R.id.imageViewLike);
+            ivShowMenu = view.findViewById(R.id.imageViewShowMenu);
             tvUsername = view.findViewById(R.id.textViewUsername);
             tvMessage = view.findViewById(R.id.textViewMessage);
             tvLikesCount = view.findViewById(R.id.textViewLikes);
